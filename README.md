@@ -1,17 +1,13 @@
-# Angular 2 Webpack
+# Spring Angular 2 Webpack
 
-This repo contains the example webpack configuration as explained
-in the [tutorial](https://angular.io/docs/ts/latest/guide/webpack.html)
+A Spring Boot application with Angular 2 frontend packaged by webpack.
+It shows how to bring the nice frontend setup, as shown
+[here](https://github.com/harti2006/angular2-webpack),
+together with a Spring Boot backend in one single maven build. 
 
-## Run the dev server
+## Build, run
 
-    npm start
-
-## Production build
-
-    npm run build
-
-## Run tests
-
-    npm test
-
+    mvn clean package
+    java -jar target/angular2-webpack-spring.jar
+    
+Open [http://localhost:8080](http://localhost:8080) in your browser.
