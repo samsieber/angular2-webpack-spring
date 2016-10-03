@@ -1,5 +1,24 @@
 <h2>Programming languages</h2>
 
 <ul class="list-group">
-    <li *ngFor="let language of languages" class="list-group-item">{{language.name}}</li>
+    <li class="list-group-item">
+        <div class="input-group">
+            <input #newLanguage
+                   (keyup.enter)="addLanguage(newLanguage.value); newLanguage.value=''"
+                   type="text"
+                   class="form-control"
+                   placeholder="Language name...">
+            <span class="input-group-btn">
+                <button (click)="addLanguage(newLanguage.value); newLanguage.value=''"
+                        class="btn btn-default"
+                        type="button">Add</button>
+            </span>
+        </div>
+    </li>
+    <li *ngFor="let language of languages" class="list-group-item clearfix">
+        <a (click)="removeLanguage(language)" class="pull-right">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+        <span>{{language.name}}</span>
+    </li>
 </ul>

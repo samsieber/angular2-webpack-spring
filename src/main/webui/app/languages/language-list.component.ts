@@ -3,7 +3,8 @@ import {LanguageService} from "./language.service";
 import {Language} from "./language";
 
 @Component({
-    templateUrl: './language-list.component.html'
+    templateUrl: './language-list.component.html',
+    styleUrls: ['./language-list.component.css']
 })
 export class LanguageListComponent implements OnInit {
     languages: Language[];
@@ -14,6 +15,18 @@ export class LanguageListComponent implements OnInit {
     ngOnInit() {
         this.service.getLanguages()
             .subscribe(languages => this.languages = languages);
+    }
+
+    addLanguage(name: string): void {
+        this.service.createLanguage(name)
+            .subscribe(language => this.languages.push(language));
+    }
+
+    removeLanguage(language: Language): void {
+        this.service.deleteLanguage(language)
+            .subscribe({
+                complete: () => this.languages = this.languages.filter(x => x != language)
+            });
     }
 
 }

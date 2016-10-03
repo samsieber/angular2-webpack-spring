@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
-import {Http, Response} from "@angular/http";
+import {Http, Response, Headers} from "@angular/http";
 import {Language} from "./language";
 import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
+import "rxjs/add/operator/ignoreElements";
 
 @Injectable()
 export class LanguageService {
@@ -19,15 +20,27 @@ export class LanguageService {
             .catch(this.handleError);
     }
 
+    createLanguage(name: string): Observable<Language> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(this.languagesUrl, JSON.stringify({name}), {headers})
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    deleteLanguage(language: Language): Observable<Language> {
+        return this.http.delete(language._links.self.href)
+            .ignoreElements()
+            .catch(this.handleError);
+    }
+
     private extractLanguages(res: Response): Language[] {
         return res.json()._embedded.languages;
     }
 
     private handleError(error: any) {
-        let errMsg = (error.message) ? error.message :
-            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        let errMsg = error.json().message;
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-
 }
