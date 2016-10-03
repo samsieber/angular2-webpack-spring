@@ -1,5 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Language, LanguageService} from "./language.service";
+import {LanguageService} from "./language.service";
+import {Language} from "./language";
 
 @Component({
     templateUrl: './language-list.component.html'
@@ -12,7 +13,7 @@ export class LanguageListComponent implements OnInit {
 
     ngOnInit() {
         this.service.getLanguages()
-            .then(languages => this.languages = languages);
+            .subscribe(languages => this.languages = languages);
     }
 
 }
