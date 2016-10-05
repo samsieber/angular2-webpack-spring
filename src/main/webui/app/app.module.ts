@@ -5,6 +5,8 @@ import {HttpModule} from "@angular/http";
 import {AppComponent} from "./app.component";
 import {routing, appRoutingProviders} from "./app.routing";
 import {LanguagesModule} from "./languages/languages.module";
+import {UserService} from "./user.service";
+import {LoginComponent} from "./login.component";
 
 @NgModule({
     imports: [
@@ -15,10 +17,12 @@ import {LanguagesModule} from "./languages/languages.module";
         LanguagesModule
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        LoginComponent
     ],
     providers: [
-        appRoutingProviders
+        appRoutingProviders,
+        UserService
     ],
     bootstrap: [AppComponent]
 })

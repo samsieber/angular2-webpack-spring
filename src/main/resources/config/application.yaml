@@ -1,4 +1,11 @@
 spring:
+  application:
+    name: my-app
   data:
     rest:
       base-path: "/api"
+
+security:
+  user:
+    name: admin
+    password: admin

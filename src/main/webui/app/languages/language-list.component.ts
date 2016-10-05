@@ -1,20 +1,26 @@
 import {Component, OnInit} from "@angular/core";
 import {LanguageService} from "./language.service";
 import {Language} from "./language";
+import {UserService} from "../user.service";
 
 @Component({
     templateUrl: './language-list.component.html',
     styleUrls: ['./language-list.component.css']
 })
 export class LanguageListComponent implements OnInit {
-    languages: Language[];
+    languages: Language[] = [];
+    isLoggedIn: boolean = false;
 
-    constructor(private service: LanguageService) {
+    constructor(private service: LanguageService,
+                private userService: UserService) {
     }
 
     ngOnInit() {
         this.service.getLanguages()
             .subscribe(languages => this.languages = languages);
+
+        this.userService.getCurrentUser()
+            .subscribe(username => this.isLoggedIn = username ? true : false);
     }
 
     addLanguage(name: string): void {

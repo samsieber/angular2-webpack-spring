@@ -29,6 +29,9 @@ module.exports = webpackMerge(commonConfig, {
             },
             '/logout': {
                 target: 'http://localhost:8081'
+            },
+            '/login': {
+                target: 'http://localhost:8081'
             }
         }
     }

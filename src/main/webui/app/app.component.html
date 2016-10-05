@@ -1,4 +1,8 @@
 <main class="container">
+    <div class="pull-right">
+        <a *ngIf="username" (click)="onLogout()">Logout {{username}}</a>
+        <a *ngIf="!username" routerLink="/login">Login</a>
+    </div>
     <div class="page-header">
         <h1>Software Projects Mngr<br/>
             <small>An Angular2 + Webpack + Spring Example</small>

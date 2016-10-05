@@ -1,7 +1,7 @@
 <h2>Programming languages</h2>
 
 
-<p class="input-group">
+<p *ngIf="isLoggedIn" class="input-group">
     <input #newLanguage
            (keyup.enter)="addLanguage(newLanguage.value); newLanguage.value=''"
            type="text"
@@ -16,7 +16,9 @@
 
 <ul class="list-group">
     <li *ngFor="let language of languages" class="list-group-item clearfix">
-        <a (click)="removeLanguage(language)" class="pull-right">
+        <a *ngIf="isLoggedIn"
+           (click)="removeLanguage(language)"
+           class="pull-right">
             <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </a>
         <span>{{language.name}}</span>
