@@ -11,3 +11,13 @@ together with a Spring Boot backend in one single maven build.
     java -jar target/angular2-webpack-spring.jar
     
 Open [http://localhost:8080](http://localhost:8080) in your browser.
+
+## Development
+
+Run the webpack dev-server, proxies backend requests to port 8081.
+
+    npm start
+
+Run the backend at port 8081, e.g.:
+
+    mvn spring-boot:run -Dserver.port=8081
