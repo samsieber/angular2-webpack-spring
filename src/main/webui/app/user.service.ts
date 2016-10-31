@@ -45,7 +45,6 @@ export class UserService {
     }
 
     private handleError(error: Response) {
-        console.error(error);
         return [401, 403].indexOf(error.status) ? Observable.of('') : Observable.throw(error);
     }
 

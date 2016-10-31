@@ -1,5 +1,10 @@
 <h2>Programming languages</h2>
 
+<div *ngIf="message" class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" aria-label="Close" (click)="dismissMessage()">
+        <span aria-hidden="true">&times;</span></button>
+    <strong>Error!</strong> <span>{{message}}</span>
+</div>
 
 <p *ngIf="isLoggedIn" class="input-group">
     <input #newLanguage

@@ -40,7 +40,6 @@ export class LanguageService {
 
     private handleError(error: any) {
         let errMsg = error.json().message;
-        console.error(errMsg);
         return Observable.throw(errMsg);
     }
 }
